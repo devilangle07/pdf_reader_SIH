@@ -1,0 +1,55 @@
+Act as a Principal Full-Stack Engineer and UX Architect. Build a modern, highly responsive, enterprise-grade Document Reader, Workbench & Universal File Converter Web Application using React/Next.js and WebAssembly.
+
+### 1. Ultra-Large File Architecture (Up to 100 GB)
+To process and convert massive files up to 100 GB without exhausting browser RAM:
+- Local Memory Virtualization & Chunking: Use the File System Access API (showOpenFilePicker) and Blob.slice() to stream files off disk in byte chunks.
+- WebAssembly (Wasm) Conversion & Parsing Engines: Offload binary file parsing, search indexing, and conversion (e.g., LibreOffice compiled to Wasm / Rust WebWorkers) to background threads.
+- Virtualized Rendering (Windowing): Render only visible pages, cells, or paragraphs in the DOM using virtualized lists (e.g., react-window, TanStack Virtual).
+- Stream-Based File Export: Write converted byte outputs directly to the native filesystem using FileSystemWritableFileStream.
+
+### 2. File Conversion Engine Matrix
+Implement a high-performance cross-format conversion pipeline:
+- PDF Conversions:
+  - PDF ➔ Word (.docx), Excel (.xlsx), Plain Text (.txt), Markdown (.md), Images (.png, .jpg), HTML.
+  - OCR Conversion: Scanned PDF / Image ➔ Searchable PDF, Editable .docx, or .txt via Tesseract.js (Wasm).
+- Office & eBook Conversions:
+  - Word (.docx, .doc, .rtf, .odt) ➔ PDF, Markdown, Plain Text, HTML, EPUB.
+  - Spreadsheets (.xlsx, .xls, .ods, .csv) ➔ PDF, CSV, JSON, HTML Table, Parquet.
+  - Presentations (.pptx) ➔ PDF, Image Slides (.png), Outline Text.
+  - EPUB / eBooks ➔ PDF, TXT, MOBI.
+- Developer & Data Conversions:
+  - Code / JSON / XML / YAML / Markdown ➔ PDF, HTML, Styled Text.
+  - Large Datasets (Parquet / Arrow / Big-CSV) ➔ Filtered CSV, JSON, Excel (.xlsx).
+- Batch Conversion Queue: Multi-file conversion job manager with progress indicators, stream pause/resume, and ZIP archive download support.
+
+### 3. Expanded Document Format Support
+Support viewing, searching, editing, and converting:
+- PDF & Fixed Layouts: PDF (.pdf), XPS (.xps), EPUB (.epub), PostScript (.ps).
+- Office Documents: Word (.docx, .doc, .rtf, .odt), Powerpoint (.pptx, .odp), Spreadsheets (.xlsx, .xls, .csv, .tsv, .ods).
+- Plain Text & Developer Formats: TXT, Markdown (.md), JSON, XML, YAML, Log files (.log), Source Code (.js, .py, .cpp, .html, .css) with syntax highlighting.
+- Data & Media Formats: Parquet, Arrow, Vector Graphics (.svg), Images (.png, .jpeg, .webp, .tiff), CAD previews (.dxf, .dwg).
+
+### 4. Core & Advanced Functional Requirements
+- Universal Upload & Stream Dropzone: Drag-and-drop dropzone displaying streamed file metadata (chunk status, file size, page/sheet count, integrity checksum).
+- View & Navigation Workspace:
+  - Multi-tab document panel & Side-by-Side Split View for comparing original vs. converted files.
+  - Continuous scroll, zoom (10%-1000%), page thumbnail navigation, Excel sheet selector.
+- High-Performance Search ("Find Stuff"):
+  - Chunked Web Worker search engine supporting Regex, fuzzy search, and case sensitivity over 100 GB files.
+- Data Extraction & Editing Workbench:
+  - Selective Extraction: Extract tables to CSV/JSON, export embedded images, copy formatted text.
+  - In-Browser Editing: Rich-text overlay for editing text, spreadsheet cell manipulation, find-and-replace, and permanent privacy redaction (blackout mask).
+- AI & Utilities:
+  - Local/API AI Assistant for document summarization, Q&A, and language translation.
+  - Web Speech API Text-to-Speech (TTS) audio reader.
+- Saving & Exporting ("Save to Device"):
+  - Convert-and-Download: Convert files directly into targeted formats.
+  - Incremental Save: Stream edits back to original or converted native files.
+
+### 5. UI/UX Specifications
+- Clean modern theme built with Tailwind CSS and Lucide Icons.
+- Top Sticky Bar: Quick action icons (Zoom, Search, Convert Menu, Edit Mode, Split View, AI Summarize, Save).
+- Left Sidebar: Thumbnails, Table of Contents, Search Results, File Stream Inspector.
+- Right Sidebar: Conversion Job Queue, Annotations, AI Assistant, and Extraction tools.
+
+Provide full structural blueprints, Web Worker streaming convertor logic, and component layouts.
